@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codex Autopilot - мод автопилота для BeamNG.drive</title>
+    <meta name="description" content="Профессиональная страница установки Codex Autopilot: маршрутный HUD-автопилот, режимы вождения, обгон трафика, скорость и настройки для BeamNG.drive.">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" data-elevate>
+      <a class="brand" href="#top" aria-label="Codex Autopilot">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img">
+            <path d="M6 19.5c3.2-7.8 7.5-11.7 13-11.7 3.3 0 5.6 1 7 3" />
+            <path d="M7 21.5h7.2c1.8 0 2.9-.7 3.6-2.4l.9-2.1c.7-1.6 1.8-2.4 3.6-2.4H26" />
+            <circle cx="10" cy="23" r="2.2" />
+            <circle cx="23" cy="23" r="2.2" />
+          </svg>
+        </span>
+        <span>Codex Autopilot</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#updates">Новое</a>
+        <a href="#features">Фишки</a>
+        <a href="#install">Установка</a>
+        <a href="#interface">Интерфейс</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="download-link small" href="codex_autopilot.zip" download>
+        <span class="icon" aria-hidden="true">↓</span>
+        Скачать мод
+      </a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true">
+          <div class="road-grid"></div>
+          <svg class="route-line" viewBox="0 0 920 520" preserveAspectRatio="none">
+            <path class="route-shadow" d="M40 410 C190 320 250 440 355 330 S520 105 650 190 720 390 880 260" />
+            <path class="route-main" d="M40 410 C190 320 250 440 355 330 S520 105 650 190 720 390 880 260" />
+          </svg>
+        </div>
+
+        <div class="hero-inner">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">BeamNG.drive mod · v0.4.6</p>
+            <h1 id="hero-title">Автопилот для маршрутов в BeamNG.drive</h1>
+            <p class="lead">
+              Codex Autopilot добавляет HUD-кнопку запуска, меню тонкой настройки, ассист обгона трафика и аккуратное управление машиной через встроенный AI BeamNG.
+            </p>
+
+            <div class="install-card" aria-label="Главная инструкция установки">
+              <span class="folder-icon" aria-hidden="true">
+                <svg viewBox="0 0 28 28">
+                  <path d="M3.5 8.5h7l2 2h12v12h-21z" />
+                  <path d="M3.5 8.5v-2h7.8l2 2" />
+                </svg>
+              </span>
+              <div>
+                <strong>Положи ZIP в папку <mark>mods</mark></strong>
+                <span>Корневая папка игры BeamNG.drive/mods</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a class="download-link primary" href="codex_autopilot.zip" download>
+                <span class="icon" aria-hidden="true">↓</span>
+                Скачать Codex Autopilot
+              </a>
+              <a class="ghost-link" href="#install">Как установить</a>
+            </div>
+
+            <dl class="trust-row" aria-label="Ключевые преимущества">
+              <div>
+                <dt>RU/EN</dt>
+                <dd>локализация</dd>
+              </div>
+              <div>
+                <dt>5-500</dt>
+                <dd>км/ч fixed limit</dd>
+              </div>
+              <div>
+                <dt>AI</dt>
+                <dd>на базе BeamNG</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="hero-product reveal" aria-label="Демонстрация Codex Autopilot">
+            <div class="product-frame">
+              <div class="preview-topbar">
+                <span></span>
+                <span></span>
+                <span></span>
+                <strong>Codex Autopilot</strong>
+              </div>
+
+              <div class="hud-stack">
+                <img src="startbutton.png" width="262" height="117" alt="Кнопка запуска автопилота в HUD">
+                <img src="stopbutton.png" width="288" height="112" alt="Кнопка остановки автопилота в HUD">
+              </div>
+
+              <div class="settings-preview">
+                <div class="settings-head">
+                  <span>Настройки автопилота</span>
+                  <span class="status-pill">route ready</span>
+                </div>
+
+                <div class="mode-tabs" role="group" aria-label="Демо режимов">
+                  <button class="active" type="button" data-mode="normal">Normal</button>
+                  <button type="button" data-mode="aggressive">Aggressive</button>
+                </div>
+
+                <div class="setting-row">
+                  <span>Режим скорости</span>
+                  <strong data-speed-label>Adaptive</strong>
+                </div>
+                <label class="toggle-row">
+                  <span>Fixed limit</span>
+                  <input type="checkbox" data-speed-toggle>
+                  <i aria-hidden="true"></i>
+                </label>
+                <label class="toggle-row">
+                  <span>Обгон трафика</span>
+                  <input type="checkbox" checked>
+                  <i aria-hidden="true"></i>
+                </label>
+                <div class="meter" aria-hidden="true">
+                  <span data-meter></span>
+                </div>
+                <p data-mode-copy>Спокойнее тормозит, держит полосу и следует дорожным лимитам.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band" aria-label="Что делает мод">
+        <div class="section-inner three-points">
+          <article class="reveal">
+            <span class="point-icon">01</span>
+            <h2>Строит путь по маршруту карты</h2>
+            <p>Берёт текущий route planner BeamNG, превращает его в AI waypoint-путь и ведёт машину к конечной точке.</p>
+          </article>
+          <article class="reveal">
+            <span class="point-icon">02</span>
+            <h2>Показывает запуск прямо в HUD</h2>
+            <p>Когда маршрут уже задан, появляется компактная кнопка «Запустить автопилот» с расстоянием до цели.</p>
+          </article>
+          <article class="reveal">
+            <span class="point-icon">03</span>
+            <h2>Останавливается безопаснее</h2>
+            <p>При остановке мод повторно отдаёт stop-команду, ждёт снижения скорости и затем отключает AI с ручником.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section update-section" id="updates" aria-labelledby="updates-title">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Что появилось</p>
+            <h2 id="updates-title">Новое в Codex Autopilot 0.4.6</h2>
+            <p>Обновление стало заметно умнее в трафике: мод не просто ждёт свободную дорогу, а умеет объезжать медленные машины и восстанавливаться после сбоев маршрута.</p>
+          </div>
+
+          <div class="update-grid">
+            <article class="update-card reveal">
+              <span class="update-tag">Traffic</span>
+              <h3>Ассист обгона медленного трафика</h3>
+              <p>Появился переключатель «Обгонять медленный трафик». Когда впереди стоящая или слишком медленная машина, автопилот временно разрешает перестроение, выбирает сторону объезда и возвращает обычный профиль после манёвра.</p>
+            </article>
+            <article class="update-card reveal">
+              <span class="update-tag">HUD</span>
+              <h3>Новый статус «обгоняет»</h3>
+              <p>В runtime-состояниях появился статус overtaking/«обгоняет», поэтому в меню видно, когда мод находится не в обычном движении, а именно в режиме активного объезда.</p>
+            </article>
+            <article class="update-card reveal">
+              <span class="update-tag">Signals</span>
+              <h3>Дальний свет и клаксон</h3>
+              <p>Если впереди близкий медленный объект, мод может мигать дальним светом и коротко сигналить клаксоном. Сигналы выключаются при остановке, смене режима или исчезновении препятствия.</p>
+            </article>
+            <article class="update-card reveal">
+              <span class="update-tag">Recovery</span>
+              <h3>Восстановление маршрута</h3>
+              <p>Если маршрут пропал вдали от финиша, автопилот пытается восстановить путь к сохранённой цели. Если машина зависла на маршруте, он перезапускает движение без ручного вмешательства.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features" aria-labelledby="features-title">
+        <div class="section-inner">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Фишки мода</p>
+            <h2 id="features-title">Всё, что Codex Autopilot добавляет в игру</h2>
+            <p>Функции взяты из Lua-расширения, UI-модуля и <code>info.json</code> внутри архива.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <span class="feature-icon route"></span>
+              <h3>Маршрутный автопилот</h3>
+              <p>Запускает BeamNG AI по маршруту, который ты заранее поставил на карте. Без маршрута мод честно предупреждает, что сначала нужна точка назначения.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon hud"></span>
+              <h3>HUD-кнопка Start/Stop</h3>
+              <p>Кнопка появляется поверх игры, когда есть маршрут. В активном состоянии она превращается в Stop Autopilot и показывает дистанцию в метрах или километрах.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon mode"></span>
+              <h3>Normal и Aggressive</h3>
+              <p>Normal едет спокойнее и старается держать полосу. Aggressive включает более гоночный профиль AI, отключает часть дорожных ограничений и может выходить из полосы ради темпа.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon speed"></span>
+              <h3>Adaptive или Fixed speed</h3>
+              <p>Adaptive следует дорожным лимитам и трафику. Fixed задаёт ограничение скорости маршрута вручную, от 5 до 500 км/ч.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon traffic"></span>
+              <h3>Защита от трафика</h3>
+              <p>Мод отслеживает машины впереди, cut-in угрозы и неподвижные препятствия, временно снижает скорость или уводит машину в безопасный объезд.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon overtake"></span>
+              <h3>Обгон медленных машин</h3>
+              <p>Новый overtake assist выбирает сторону объезда, переиздаёт команды манёвра, держит обгон минимум несколько секунд и завершает его, когда препятствие осталось позади.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon tune"></span>
+              <h3>Настройки под стиль езды</h3>
+              <p>Есть агрессивность 0.2-2.0, избегание машин, обгон медленного трафика, удержание полосы, видимость HUD и очистка маршрута после остановки.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon save"></span>
+              <h3>Сохранение параметров</h3>
+              <p>Настройки сохраняются в <code>settings/CodexAutopilot.json</code>, поэтому выбранный профиль переживает перезапуск игры.</p>
+            </article>
+            <article class="feature-card reveal">
+              <span class="feature-icon lang"></span>
+              <h3>Русский и английский интерфейс</h3>
+              <p>Тексты меню, HUD и уведомлений переключаются по языку UI BeamNG: RU для русского, EN для остальных локалей.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark-showcase" id="interface" aria-labelledby="interface-title">
+        <div class="section-inner showcase-grid">
+          <div class="showcase-copy reveal">
+            <p class="eyebrow">Интерфейс</p>
+            <h2 id="interface-title">Настройки выглядят как родная часть BeamNG</h2>
+            <p>
+              Мод добавляет пункт «Настройки автопилота» в меню, отдельную страницу параметров и HUD-виджет поверх игры.
+            </p>
+            <ul class="check-list">
+              <li>Runtime-статус: ожидание, едет, обгоняет, останавливается, прибыл, нет маршрута, трафик впереди.</li>
+              <li>В блоке вождения появился переключатель обгона медленного трафика.</li>
+              <li>Кнопки запуска, остановки, сброса настроек и возврата в меню.</li>
+              <li>Автоматическое обновление состояния без ручного перезахода в меню.</li>
+            </ul>
+          </div>
+
+          <figure class="screenshot-card reveal">
+            <img src="sett2.png" width="1916" height="914" alt="Окно настроек Codex Autopilot в BeamNG.drive">
+            <figcaption>Экран настроек; в 0.4.6 в блоке вождения добавился переключатель обгона трафика</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section install-section" id="install" aria-labelledby="install-title">
+        <div class="section-inner install-layout">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Установка</p>
+            <h2 id="install-title">Один ZIP, одна папка mods</h2>
+            <p>Архив уже собран в формате BeamNG-мода. Распаковывать его не нужно.</p>
+          </div>
+
+          <div class="steps reveal">
+            <article class="step active">
+              <span>1</span>
+              <div>
+                <h3>Скачай архив</h3>
+                <p>Нажми кнопку и оставь файл <code>codex_autopilot.zip</code> целым.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span>2</span>
+              <div>
+                <h3>Открой папку игры</h3>
+                <p>Перейди в корневую папку BeamNG.drive и найди или создай папку <code>mods</code>.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span>3</span>
+              <div>
+                <h3>Положи ZIP в mods</h3>
+                <p>Итоговый путь должен выглядеть так: <code>BeamNG.drive/mods/codex_autopilot.zip</code>.</p>
+              </div>
+            </article>
+            <article class="step">
+              <span>4</span>
+              <div>
+                <h3>Запусти игру и задай маршрут</h3>
+                <p>Поставь маршрут на карте, вернись к машине и нажми HUD-кнопку запуска.</p>
+              </div>
+            </article>
+          </div>
+
+          <aside class="path-panel reveal" aria-label="Путь установки">
+            <span>Путь установки</span>
+            <code data-copy-value>BeamNG.drive/mods/codex_autopilot.zip</code>
+            <button type="button" data-copy-path>Скопировать путь</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section spec-section" aria-labelledby="spec-title">
+        <div class="section-inner spec-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Под капотом</p>
+            <h2 id="spec-title">Что лежит внутри архива</h2>
+          </div>
+
+          <div class="spec-table reveal" role="table" aria-label="Состав мода">
+            <div role="row">
+              <span role="cell">Lua extension</span>
+              <strong role="cell"><code>lua/ge/extensions/codex/autopilot.lua</code></strong>
+            </div>
+            <div role="row">
+              <span role="cell">UI module</span>
+              <strong role="cell">Angular HUD + settings page</strong>
+            </div>
+            <div role="row">
+              <span role="cell">Autoload</span>
+              <strong role="cell"><code>scripts/modScript.lua</code> загружает расширение</strong>
+            </div>
+            <div role="row">
+              <span role="cell">Версия</span>
+              <strong role="cell">0.4.6</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="section-inner faq-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">FAQ</p>
+            <h2 id="faq-title">Перед первым запуском</h2>
+          </div>
+
+          <div class="accordion reveal">
+            <button class="faq-item open" type="button">
+              <span>Почему кнопка автопилота не появилась?</span>
+              <i></i>
+            </button>
+            <div class="faq-panel">
+              <p>Нужен активный маршрут на карте, включённый HUD-виджет в настройках и машина игрока. Мод показывает предупреждение, если маршрута или машины нет.</p>
+            </div>
+
+            <button class="faq-item" type="button">
+              <span>Это отдельный AI или встроенный BeamNG AI?</span>
+              <i></i>
+            </button>
+            <div class="faq-panel">
+              <p>Мод управляет штатным AI BeamNG: строит waypoint-путь, применяет профиль скорости, агрессивности, удержания полосы, реакции на трафик и ассиста обгона.</p>
+            </div>
+
+            <button class="faq-item" type="button">
+              <span>Можно ли быстро вернуть настройки?</span>
+              <i></i>
+            </button>
+            <div class="faq-panel">
+              <p>Да. В меню Codex Autopilot есть кнопка сброса: она возвращает enabled HUD, Normal, Adaptive, 80 км/ч fixed limit, aggression 0.3, включённое избегание машин и обгон медленного трафика.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-inner">
+        <div>
+          <strong>Codex Autopilot</strong>
+          <span>Route-based autopilot mod for BeamNG.drive</span>
+        </div>
+        <a class="download-link small" href="codex_autopilot.zip" download>
+          <span class="icon" aria-hidden="true">↓</span>
+          Скачать ZIP
+        </a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
